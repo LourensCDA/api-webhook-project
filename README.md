@@ -1,8 +1,10 @@
 # API / WEBHOOK project
 
 This project provides for two scenarios:
-Scenario 1 - a simple lead API requiring users to authenticate using an API key to send leads to the API endpoint, they can also retrieve specific lead outcomes using the lead ID and the API key.
-Scenario 2 - a webhook endpoint that accepts lead data via POST requests and processes them accordingly.
+Scenario 1 - a simple lead API requiring users to authenticate using an API key to send leads to the API endpoint
+![API Scenario 1](Basic API - Send Lead.png)
+Scenario 2 - retrieve specific lead outcomes using the lead ID and the API key.
+Scenario 3 - a webhook endpoint that accepts lead data via POST requests and processes them accordingly.
 
 ## Features
 
