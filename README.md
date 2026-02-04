@@ -15,6 +15,10 @@ Basic UML diagram of the Lead API structure:
 Scenario 3 - a webhook endpoint that accepts lead data via POST requests and does a process. In this case, it just logs the data to a file.
 ![API Scenario 3](./Webhook.png)
 
+Basic UML diagram of the Webhook structure:
+
+![Lead UML](./Webhook%20UML.png)
+
 ## Features
 
 - API endpoint for submitting leads with authentication via API key.
