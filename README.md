@@ -41,7 +41,7 @@ Basic UML diagram of the Webhook structure:
 
 ## Steps to complete project
 
-1. Design the basic processes and UML diagrams.
+1. Design the basic processes and UML diagrams. ✅
 2. Set up Docker postgreSQL instance.
 3. Set up packages
 4. Create database models and migrations.
