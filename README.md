@@ -1,6 +1,6 @@
 # API / WEBHOOK project
 
-This project provides for two scenarios:
+This project provides for three scenarios:
 Scenario 1 - a simple lead API requiring users to authenticate using an API key to send leads to the API endpoint
 
 ![API Scenario 1](./Basic%20API%20-%20Send%20Lead.png)
@@ -32,22 +32,46 @@ Basic UML diagram of the Webhook structure:
 ## Technologies Used
 
 - Python
-  - FastAPI
-  - Uvicorn
-  - Pydantic
-  - SQLAlchemy
-- PostgreSQL
+  - FastAPI\*
+  - Uvicorn\*
+  - Pydantic\*
+  - SQLModel
+  - alembic (Please note that using SQLModel with alembic can be a bit tricky, but it's possible with some configuration.)
+- SQLite
 - Docker (optional)
+
+* I've used "fastapi[standard]" which includes these packages and more for development and testing.
 
 ## Steps to complete project
 
 1. Design the basic processes and UML diagrams. ✅
-2. Set up Docker postgreSQL instance.
-3. Set up packages
-4. Create database models and migrations.
-5. Implement API endpoints for lead submission and retrieval.
-6. Implement webhook endpoint and hook management.
-7. Add authentication and validation.
-8. Test the endpoints using tools like Postman or curl.
-9. Add testing and documentation.
-10. Review and optimize the code.
+2. Set up packages ✅
+3. Create database models and migrations. ✅
+4. Implement API endpoints for lead submission and retrieval.
+5. Implement webhook endpoint and hook management.
+6. Add authentication and validation.
+7. Test the endpoints using tools like Postman or curl.
+8. Add testing and documentation.
+9. Containerize
+
+# migrations
+
+To set up database migrations using Alembic with SQLModel, you can follow these steps:
+
+```bash
+# add alembic to your project
+uv add alembic
+
+# initialize alembic
+uv run alembic init alembic
+```
+
+Do the adjustments to "alembic.ini" and "alembic/env.py" to work with SQLModel and your database URL. Then you can create and apply migrations as needed:
+
+```bash
+# create a new migration
+uv run alembic revision --autogenerate -m "create initial tables"
+
+# runs the migrations to update the database schema
+uv run alembic upgrade head
+```
