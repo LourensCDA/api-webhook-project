@@ -1,7 +1,10 @@
+import os
 from fastapi import FastAPI
-
 from routes import router as api_router
+from dotenv import load_dotenv
+from sqlmodel import create_engine
 
+load_dotenv()
 
 app = FastAPI()
 
