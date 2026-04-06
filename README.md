@@ -66,7 +66,35 @@ uv add alembic
 uv run alembic init alembic
 ```
 
-Do the adjustments to "alembic.ini" and "alembic/env.py" to work with SQLModel and your database URL. Then you can create and apply migrations as needed:
+Do the adjustments to "alembic.ini", "alembic/script.py.mako" and "alembic/env.py" to work with SQLModel and your database URL. Then you can create and apply migrations as needed:
+
+In the "alembic.ini" file:
+
+Comment out line 89
+
+In the "alembic/script.py.mako" file, add in:
+
+line 13:
+
+```text
+import sqlmodel
+```
+
+In the "alembic/env.py" file, you need to add the following lines:
+
+line 5-6:
+
+```py
+from sqlmodel import SQLModel
+import models
+```
+
+line 20-21:
+
+```py
+database_url = os.getenv("DATABASE_URL", "sqlite:///database.db")
+config.set_main_option("sqlalchemy.url", database_url)
+```
 
 ```bash
 # create a new migration
