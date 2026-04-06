@@ -1,8 +1,8 @@
 """create initial tables
 
-Revision ID: a2ebede18859
+Revision ID: 81fa9552c609
 Revises: 
-Create Date: 2026-04-04 17:55:58.385425
+Create Date: 2026-04-06 10:44:22.292043
 
 """
 from typing import Sequence, Union
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 import sqlmodel
 
 # revision identifiers, used by Alembic.
-revision: str = 'a2ebede18859'
+revision: str = '81fa9552c609'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -29,7 +29,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('users',
-    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('id', sa.Uuid(), nullable=False),
     sa.Column('name', sqlmodel.sql.sqltypes.AutoString(length=50), nullable=False),
     sa.Column('apy_key', sqlmodel.sql.sqltypes.AutoString(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id')
@@ -46,8 +46,8 @@ def upgrade() -> None:
     sa.Column('name', sqlmodel.sql.sqltypes.AutoString(length=50), nullable=False),
     sa.Column('email', sqlmodel.sql.sqltypes.AutoString(length=255), nullable=False),
     sa.Column('phone', sqlmodel.sql.sqltypes.AutoString(length=20), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('campaign_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Uuid(), nullable=True),
+    sa.Column('campaign_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

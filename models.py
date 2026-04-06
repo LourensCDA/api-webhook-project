@@ -9,25 +9,26 @@ from sqlmodel import (
     JSON,
 )
 from typing import Dict
+from uuid import UUID, uuid4
 
 
 class users(SQLModel, table=True):
-    id: int = Field(default=None, primary_key=True)
+    id: UUID = Field(default_factory=uuid4, primary_key=True)
     name: str = Field(max_length=50)
     apy_key: str = Field(default=None, max_length=255)
 
 
 class leads(SQLModel, table=True):
-    id: int = Field(default=None, primary_key=True)
+    id: int | None = Field(default=None, primary_key=True)
     name: str = Field(max_length=50)
     email: str = Field(max_length=255)
     phone: str = Field(max_length=20)
-    user_id: int = Field(default=None, foreign_key="users.id")
-    campaign_id: int = Field(default=None)
+    user_id: UUID | None = Field(default=None, foreign_key="users.id")
+    campaign_id: int | None = Field(default=None)
 
 
 class calls(SQLModel, table=True):
-    id: int = Field(default=None, primary_key=True)
+    id: int = Field(primary_key=True)
     lead_id: int = Field(default=None, foreign_key="leads.id")
     create_date: str = Field(max_length=50)
     duration: int = Field(default=0)
