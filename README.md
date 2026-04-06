@@ -47,8 +47,8 @@ Basic UML diagram of the Webhook structure:
 1. Design the basic processes and UML diagrams. ✅
 2. Set up packages ✅
 3. Create database models and migrations. ✅
-4. Implement API endpoints for lead submission and retrieval.
-5. Implement webhook endpoint and hook management.
+4. Implement API endpoints for lead submission and retrieval. ✅
+5. Implement webhook endpoint and hook management. ✅
 6. Add authentication and validation.
 7. Test the endpoints using tools like Postman or curl.
 8. Add testing and documentation.

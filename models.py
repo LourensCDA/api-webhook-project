@@ -42,6 +42,6 @@ class hooks(SQLModel, table=True):
 
 
 class entries(SQLModel, table=True):
-    id: int = Field(default=None, primary_key=True)
+    id: int | None = Field(default=None, primary_key=True)
     hook_id: int = Field(default=None, foreign_key="hooks.id")
     data: Dict = Field(default_factory=dict, sa_column=Column(JSON))

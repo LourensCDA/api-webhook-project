@@ -34,3 +34,12 @@ async def create_lead(lead: models.leads, session: Session = Depends(get_session
     except Exception as e:
         session.rollback()
         raise HTTPException(status_code=400, detail=f"Error creating lead: {str(e)}")
+
+
+@router.get("/leads/{lead_id}/calls", response_model=List[models.calls])
+async def get_lead_calls(lead_id: int, session: Session = Depends(get_session)):
+    """
+    Get all calls for a specific lead.
+    """
+    statement = select(models.calls).where(models.calls.lead_id == lead_id)
+    return session.exec(statement).all()
